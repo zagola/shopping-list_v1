@@ -17,5 +17,9 @@ public class ShoppingRepository {
                 BeanPropertyRowMapper.newInstance(ShoppingItem.class));
     }
 
+    public void addItem(String item) {
+        jdbcTemplate.update("INSERT INTO List (item) VALUES (?)", item);
+    }
+
 
 }

@@ -1,8 +1,7 @@
 package com.example.shopping_list_v1;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,8 +10,13 @@ public class ShoppingController {
     @Autowired
     ShoppingRepository shoppingRepository;
 
-    @GetMapping("/")
+    @GetMapping("/get")
     public List<ShoppingItem> getList() {
         return shoppingRepository.getAll();
+    }
+
+    @PostMapping("/add")
+    public void addItem(@RequestBody ShoppingItem item) {
+        shoppingRepository.addItem(item.getItem());
     }
 }
