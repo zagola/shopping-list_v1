@@ -19,4 +19,9 @@ public class ShoppingController {
     public void addItem(@RequestBody ShoppingItem item) {
         shoppingRepository.addItem(item.getItem());
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteItem(@PathVariable("id") int id) {
+        shoppingRepository.deleteItem(id);
+    }
 }

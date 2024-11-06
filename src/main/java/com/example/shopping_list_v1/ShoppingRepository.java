@@ -21,5 +21,9 @@ public class ShoppingRepository {
         jdbcTemplate.update("INSERT INTO List (item) VALUES (?)", item);
     }
 
+    public void deleteItem(int id) {
+        jdbcTemplate.update("DELETE FROM List WHERE id=?", id);
+    }
+
 
 }
