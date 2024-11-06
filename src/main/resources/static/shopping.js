@@ -1,3 +1,14 @@
+var delete_item = function() {
+ let id = $(this).parent().attr("id")
+ $.ajax({
+     type : "DELETE",
+     url : "/delete/" + id,
+     success: function (result) {
+            $.getJSON("/get", fetch_list);
+     }
+ })
+}
+
 var fetch_list = function(data) {
     $("#shoppinglist").html("");
     for (let i = 0; i < data.length; i++) {
@@ -9,7 +20,9 @@ var fetch_list = function(data) {
                 `    ${text}` +
                 `    <button class=\"delete is-large\"></button>` +
                 `</div>`);
-        }
+
+            $("#" + id + " > button").click(delete_item);
+    }
     console.log(data);
 }
 
