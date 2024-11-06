@@ -13,4 +13,22 @@ var fetch_list = function(data) {
     console.log(data);
 }
 
+var add_done = function(){
+    $.getJSON("/get", fetch_list);
+}
+
+var add_item = function() {
+    var newItem = $("#newItem").val();
+    $.post({
+    url: "/add",
+    data: JSON.stringify({item : newItem}),
+    contentType: 'application/json; charset=utf-8'
+    }).done(add_done);
+}
+
+var document_ready = function() {
+    $("#add").click(add_item);
+}
+
 $.getJSON("/get", fetch_list);
+$(document).ready(document_ready);
