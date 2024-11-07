@@ -37,6 +37,7 @@ var add_item = function() {
     data: JSON.stringify({item : newItem}),
     contentType: 'application/json; charset=utf-8'
     }).done(add_done);
+    $("#newItem").val("");
 }
 
 var document_ready = function() {
